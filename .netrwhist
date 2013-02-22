@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/var/www/fresenius/viapoolCore/application/models'
+let g:netrw_dirhist_2='/var/www/viapool/fresenius/viapoolCore/application/models/Servicio/Rutina'
+let g:netrw_dirhist_3='/var/www/viapool/fresenius/system/library/Mbi/Rest/JsonRpc'
+let g:netrw_dirhist_4='/var/www/viapool/core/system/library/Mbi/Auth'
+let g:netrw_dirhist_5='/var/www/viapool/core/system/library/Mbi/Auth/Login'
+let g:netrw_dirhist_6='/var/www/viapool/core/viapoolCore/application/controllers'
+let g:netrw_dirhist_7='/var/www/viapool/core/viapoolCore/application/modules/restfulapi/models/Controller/Plugin'
+let g:netrw_dirhist_8='/var/www/viapool/core/viapoolCore/application/modules/restfulapi/models/Controller'
+let g:netrw_dirhist_9='/var/www/viapool/core/viapoolCore/application/modules/restfulapi/models/Controller/Plugin/Resource'
