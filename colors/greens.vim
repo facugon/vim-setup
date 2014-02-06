@@ -6,9 +6,10 @@
 
 " First remove all existing highlighting.
 set background=dark
-highlight clear
+"highlight clear
+"
 if exists("syntax_on")
-	syntax reset
+  syntax reset
 endif
 
 let colors_name = "greens"
@@ -36,19 +37,19 @@ hi DiffChange                                      guibg=DarkMagenta  ctermbg=Da
 
 if v:version >= 700
 
-hi CursorLine                                      guibg=#403820
-hi CursorColumn                                    guibg=#403820
+  hi CursorLine                                      guibg=#403820
+  hi CursorColumn                                    guibg=#403820
 
-hi MatchParen  ctermfg=White      guifg=White      guibg=DarkGreen    ctermbg=DarkGreen
+  hi MatchParen  ctermfg=White      guifg=White      guibg=DarkGreen    ctermbg=DarkGreen
 
-hi Pmenu       ctermfg=Black      guifg=Black      guibg=#C4C090      ctermbg=LightGray
-hi PmenuSel    ctermfg=Black      guifg=Black      guibg=#FFBF00      ctermbg=Yellow
-hi PmenuSbar   ctermfg=Black      guifg=Black      guibg=LightGray    ctermbg=White
-hi PmenuThumb  ctermfg=Black      guifg=Black      guibg=White        ctermbg=Green  gui=NONE  cterm=NONE
+  hi Pmenu       ctermfg=Black      guifg=Black      guibg=#C4C090      ctermbg=LightGray
+  hi PmenuSel    ctermfg=Black      guifg=Black      guibg=#FFBF00      ctermbg=Yellow
+  hi PmenuSbar   ctermfg=Black      guifg=Black      guibg=LightGray    ctermbg=White
+  hi PmenuThumb  ctermfg=Black      guifg=Black      guibg=White        ctermbg=Green  gui=NONE  cterm=NONE
 
-hi TabLine                        guifg=Black      guibg=#A4A090      gui=NONE
-hi TabLineFill                    guifg=Black      guibg=#A4A090      gui=NONE
-hi TabLineSel                     guifg=White      guibg=Black
+  hi TabLine                        guifg=Black      guibg=#A4A090      gui=NONE
+  hi TabLineFill                    guifg=Black      guibg=#A4A090      gui=NONE
+  hi TabLineSel                     guifg=White      guibg=Black
 
 endif
 
