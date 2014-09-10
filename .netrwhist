@@ -1,6 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/var/www/wop/365/addons/default/modules/poliza/language/english/poliza'
-let g:netrw_dirhist_2='/var/www/wop/365/system/cms/libraries/Lex'
-let g:netrw_dirhist_3='/var/www/wop/365/system/cms/libraries/Streams/drivers'
-let g:netrw_dirhist_4='/var/www/wop/365/addons/default/modules/pago/views/admin/factura'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/etc/NetworkManager'
