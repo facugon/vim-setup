@@ -52,11 +52,11 @@ syntax keyword javaScriptBranch         break continue
 syntax keyword javaScriptLabel          case default
 syntax keyword javaScriptPrototype      prototype
 syntax keyword javaScriptNode           require module
-syntax keyword javaScriptNodeMethods    include includes exports extend include initialize on off trigger
+syntax keyword javaScriptMethods        include includes exports extend include initialize on off trigger call apply forEach indexOf push split parseInt parseFloat sort test match exec toString toLowerCase toUpperCase hasOwnProperty splice stringify parse
 syntax keyword javaScriptStatement      return with
 syntax keyword javaScriptGlobalObjects  Array Boolean Date Function Math Number Object RegExp String
 syntax keyword javaScriptExceptions     try catch throw finally Error EvalError RangeError ReferenceError SyntaxError TypeError URIError
-syntax keyword javaScriptReserved       abstract enum int short boolean export interface static byte extends long super char final native synchronized class float package throws const goto private transient debugger implements protected volatile double import public
+syntax keyword javaScriptReserved       abstract enum int short boolean export interface static byte extends long super char final native synchronized class constructor float package throws const goto private transient debugger implements protected volatile double import public
 "}}}
 " Comments {{{
 syn keyword javaScriptCommentTodo      TODO FIXME XXX TBD contained
@@ -105,7 +105,7 @@ syntax keyword javaScriptAjaxMethods              onreadystatechange abort getAl
 syntax keyword javaScriptPropietaryObjects        ActiveXObject
 syntax keyword javaScriptPropietaryMethods        attachEvent detachEvent cancelBubble returnValue
 
-syntax keyword javaScriptHtmlElemProperties       className  clientHeight  clientLeft  clientTop  clientWidth  dir  href  id  innerHTML  lang  length  offsetHeight  offsetLeft  offsetParent  offsetTop  offsetWidth  scrollHeight  scrollLeft  scrollTop  scrollWidth  style  tabIndex  target  title
+syntax keyword javaScriptHtmlElemProperties       className  clientHeight  clientLeft  clientTop  clientWidth  dir  href  innerHTML  lang  length  offsetHeight  offsetLeft  offsetParent  offsetTop  offsetWidth  scrollHeight  scrollLeft  scrollTop  scrollWidth  style  tabIndex  target  title
 
 syntax keyword javaScriptEventListenerKeywords    blur click focus mouseover mouseout load item
 
@@ -208,7 +208,8 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 	else
 		command -nargs=+ HiLink hi def link <args>
 	endif
-	HiLink javaScriptNodeMethods            Type
+	HiLink javaScriptEventListenerMethods   Label
+	HiLink javaScriptMethods                Type
 	HiLink javaScriptNode                   PreProc
 	HiLink javaScriptEndColons              Operator
 	HiLink javaScriptObjectAssign           Operator
