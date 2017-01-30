@@ -46,7 +46,6 @@ if has("autocmd")
     augroup module
         autocmd BufRead,BufNewFile *.mustache set filetype=html.twig
         autocmd BufRead,BufNewFile *.phtml set filetype=phtml
-        autocmd BufRead,BufNewFile *.ejs set filetype=html
     augroup END
 
     " Enable twig syntax highlight

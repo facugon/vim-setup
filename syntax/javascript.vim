@@ -52,11 +52,12 @@ syntax keyword javaScriptBranch         break continue
 syntax keyword javaScriptLabel          case default
 syntax keyword javaScriptPrototype      prototype
 syntax keyword javaScriptNode           require module
-syntax keyword javaScriptMethods        include includes exports extend include initialize on off trigger call apply forEach indexOf push split parseInt parseFloat sort test match exec toString toLowerCase toUpperCase hasOwnProperty splice stringify parse
+syntax keyword javaScriptMethods        include includes exports extend include initialize on off trigger call apply forEach indexOf push split parseInt toFixed getTime floor now isNaN parseFloat sort test match exec toString toLowerCase toUpperCase hasOwnProperty splice stringify parse find filter map reduce
 syntax keyword javaScriptStatement      return with
 syntax keyword javaScriptGlobalObjects  Array Boolean Date Function Math Number Object RegExp String
 syntax keyword javaScriptExceptions     try catch throw finally Error EvalError RangeError ReferenceError SyntaxError TypeError URIError
 syntax keyword javaScriptReserved       abstract enum int short boolean export interface static byte extends long super char final native synchronized class constructor float package throws const goto private transient debugger implements protected volatile double import public
+syntax keyword javaScriptForceNormal    error 
 "}}}
 " Comments {{{
 syn keyword javaScriptCommentTodo      TODO FIXME XXX TBD contained
@@ -93,22 +94,16 @@ syntax match   javaScriptFloat          /\<-\=\%(\d\+\.\d\+\|\d\+\.\|\.\d\+\)\%(
 "}}}
 "  DOM, Browser and Ajax Support   {{{
 syntax keyword javaScriptBrowserObjects           window navigator screen history location
-
 syntax keyword javaScriptDOMObjects               console document event HTMLElement Anchor Area Base Body Button Form Frame Frameset Image Link Meta Option Select Style Table TableCell TableRow Textarea
 syntax keyword javaScriptDOMMethods               createTextNode createElement insertBefore replaceChild removeChild appendChild  hasChildNodes  cloneNode  normalize  isSupported  hasAttributes  getAttribute  setAttribute  removeAttribute  getAttributeNode  setAttributeNode  removeAttributeNode  getElementsByTagName  hasAttribute  getElementById adoptNode close compareDocumentPosition createAttribute createCDATASection createComment createDocumentFragment createElementNS createEvent createExpression createNSResolver createProcessingInstruction createRange createTreeWalker elementFromPoint evaluate getBoxObjectFor getElementsByClassName getSelection getUserData hasFocus importNode
 syntax keyword javaScriptDOMProperties            nodeName  nodeValue  nodeType  parentNode  childNodes  firstChild  lastChild  previousSibling  nextSibling  attributes  ownerDocument  namespaceURI  prefix  localName  tagName
-
 syntax keyword javaScriptAjaxObjects              XMLHttpRequest
 syntax keyword javaScriptAjaxProperties           readyState responseText responseXML statusText
 syntax keyword javaScriptAjaxMethods              onreadystatechange abort getAllResponseHeaders getResponseHeader open send setRequestHeader
-
 syntax keyword javaScriptPropietaryObjects        ActiveXObject
 syntax keyword javaScriptPropietaryMethods        attachEvent detachEvent cancelBubble returnValue
-
 syntax keyword javaScriptHtmlElemProperties       className  clientHeight  clientLeft  clientTop  clientWidth  dir  href  innerHTML  lang  length  offsetHeight  offsetLeft  offsetParent  offsetTop  offsetWidth  scrollHeight  scrollLeft  scrollTop  scrollWidth  style  tabIndex  target  title
-
 syntax keyword javaScriptEventListenerKeywords    blur click focus mouseover mouseout load item
-
 syntax keyword javaScriptEventListenerMethods     scrollIntoView  addEventListener  dispatchEvent  removeEventListener preventDefault stopPropagation
 " }}}
 " DOM/HTML5/CSS specified things {{{
@@ -163,15 +158,16 @@ syntax keyword javaScriptEventListenerMethods     scrollIntoView  addEventListen
 	"}}}
 	endif
 " end DOM/HTML/CSS specified things }}}
+"
 " Code blocks"{{{
-syntax cluster javaScriptAll       contains=javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptString,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptWebAPI,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFuncKeyword,javaScriptConditional,javaScriptGlobal,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptMessage,javaScriptIdentifier,javaScriptExceptions,javaScriptReserved,javaScriptDeprecated,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation,javaScriptBrowserObjects,javaScriptDOMObjects,javaScriptAjaxObjects,javaScriptPropietaryObjects,javaScriptDOMMethods,javaScriptHtmlElemProperties,javaScriptDOMProperties,javaScriptEventListenerKeywords,javaScriptEventListenerMethods,javaScriptAjaxProperties,javaScriptAjaxMethods,javaScriptFuncArg
-
+syntax cluster javaScriptAll       contains=javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptString,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptWebAPI,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFuncKeyword,javaScriptConditional,javaScriptGlobal,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptMessage,javaScriptIdentifier,javaScriptExceptions,javaScriptReserved,javaScriptDeprecated,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation,javaScriptBrowserObjects,javaScriptDOMObjects,javaScriptAjaxObjects,javaScriptPropietaryObjects,javaScriptDOMMethods,javaScriptHtmlElemProperties,javaScriptDOMProperties,javaScriptEventListenerKeywords,javaScriptEventListenerMethods,javaScriptAjaxProperties,javaScriptAjaxMethods,javaScriptFuncArg,javaScriptForceNormal
 if main_syntax == "javascript"
 	syntax sync clear
 	syntax sync ccomment javaScriptComment minlines=200
 	" syntax sync match javaScriptHighlight grouphere javaScriptBlock /{/
 endif
 "}}}
+"
 " Function and arguments highlighting {{{
 syntax keyword javaScriptFuncKeyword     function contained
 syntax region  javascriptFuncExp         start=/\w\+\s\==\s\=function/ end="\([^)]*\)" contains=javascriptFuncEq,javascriptFuncKeyword,javascriptFuncArg keepend
@@ -180,6 +176,7 @@ syntax match   javaScriptFuncComma       /,/ contained
 syntax match   javascriptFuncEq          /=/ contained
 syntax region  javaScriptFuncDef         start="function" end="\([^)]*\)" contains=javaScriptFuncKeyword,javaScriptFuncArg keepend
 "}}}
+"
 " Braces, Parens, symbols, colons {{{
 syn match javaScriptBraces       "[{}\[\]]"
 syn match javaScriptParens       "[()]"
@@ -188,15 +185,15 @@ syn match javaScriptEndColons    "[;,]"
 syn match javaScriptObjectAssign    "[:]"
 syn match javaScriptLogicSymbols "\(&&\)\|\(||\)"
 "}}}
+"
 " JavaScriptFold Function {{{
-
 function! JavaScriptFold()
 	setl foldmethod=syntax
 	setl foldlevelstart=1
 	syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
 endfunction
-
 " }}}
+"
 " Highlight links {{{
 " Define the default highlighting.
 " For version 5.7 and earlier: only when not done already
@@ -217,22 +214,17 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 	HiLink javaScriptLogicSymbols           Boolean
 	HiLink javaScriptBraces                 Function
 	HiLink javaScriptParens                 Operator
-
 	HiLink javaScriptComment                Comment
 	HiLink javaScriptLineComment            Comment
 	HiLink javaScriptDocComment             Comment
 	HiLink javaScriptCommentTodo            Todo
-
 	HiLink javaScriptDocTags                Special
 	HiLink javaScriptDocSeeTag              Function
 	HiLink javaScriptDocParam               Function
-
 	HiLink javaScriptString                 String
 	HiLink javaScriptRegexpString           String
-
 	HiLink javaScriptNumber                 Number
 	HiLink javaScriptFloat                  Number
-
 	HiLink javaScriptGlobal                 Constant
 	HiLink javaScriptCharacter              Character
 	HiLink javaScriptPrototype              Type
@@ -251,7 +243,6 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 	HiLink javaScriptSource                 Special
 	HiLink javaScriptGlobalObjects          Special
 	HiLink javaScriptExceptions             Special
-
 	HiLink javaScriptDeprecated             Exception
 	HiLink javaScriptError                  Error
 	HiLink javaScriptParensError            Error
@@ -259,42 +250,31 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 	HiLink javaScriptParensErrB             Error
 	HiLink javaScriptParensErrC             Error
 	HiLink javaScriptDomErrNo               Error
-
 	HiLink javaScriptDomNodeConsts          Constant
 	HiLink javaScriptDomElemAttrs           Label
 	HiLink javaScriptDomElemFuncs           Type
-
 	HiLink javaScriptWebAPI                 Type
-
 	HiLink javaScriptHtmlElemAttrs          Label
 	HiLink javaScriptHtmlElemFuncs          Type
-
 	HiLink javaScriptCssStyles              Type
-
 	HiLink javaScriptBrowserObjects         Constant
-
 	HiLink javaScriptDOMObjects             Constant
 	HiLink javaScriptDOMMethods             Type
 	HiLink javaScriptDOMProperties          Label
-
 	HiLink javaScriptAjaxObjects            Constant
 	HiLink javaScriptAjaxMethods            Type
 	HiLink javaScriptAjaxProperties         Label
-
 	HiLink javaScriptFuncKeyword            Function
 	HiLink javaScriptFuncDef                PreProc
 	HiLink javascriptFuncExp                Title
 	HiLink javaScriptFuncArg               	Special
 	HiLink javascriptFuncComma              Operator
 	HiLink javascriptFuncEq                 Operator
-
 	HiLink javaScriptHtmlEvents             Constant
 	HiLink javaScriptHtmlElemProperties     Label
-
 	HiLink javaScriptEventListenerKeywords  Type
-
 	HiLink javaScriptPropietaryObjects      Constant
-
+	HiLink javaScriptForceNormal            Normal
 	delcommand HiLink
 endif
 " end Highlight links }}}
