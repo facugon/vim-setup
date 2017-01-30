@@ -289,3 +289,13 @@ let b:current_syntax = "javascript"
 if main_syntax == 'javascript'
 	unlet main_syntax
 endif
+
+if exists("javascript_plugin_jsdoc")
+  runtime extras/jsdoc.vim
+  " NGDoc requires JSDoc
+  if exists("javascript_plugin_ngdoc")
+    runtime extras/ngdoc.vim
+  endif
+endif
+
+
